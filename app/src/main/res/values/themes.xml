@@ -10,7 +10,14 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:statusBarColor" >?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="AppTheme" parent="Theme.NewsApp" />
+
+    <style name="AppTheme.BrandedLaunch" parent="Theme.NewsApp" >
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+
 </resources>
