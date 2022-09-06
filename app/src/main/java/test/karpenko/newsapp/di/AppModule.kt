@@ -32,6 +32,7 @@ object AppModule {
     @Singleton
     fun provideRetrofit(baseUrl: String): NewsService =
         Retrofit.Builder()
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient())
             .build()
