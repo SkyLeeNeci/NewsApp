@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import test.karpenko.newsapp.R
-import test.karpenko.newsapp.databinding.FragmentDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 import test.karpenko.newsapp.databinding.FragmentMainBinding
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
