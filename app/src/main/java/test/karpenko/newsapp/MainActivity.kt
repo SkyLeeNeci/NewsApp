@@ -16,19 +16,16 @@ class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val mBinding
-    get() = _binding!!
+        get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_splash)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
+        mBinding.bottomNavigationView.setupWithNavController(
+            navController = findNavController(R.id.nav_host_fragment)
+        )
 
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(2000)
-            _binding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(mBinding.root)
-            mBinding.bottomNavigationView.setupWithNavController(
-                navController = mBinding.navHostFragment.findNavController())
-        }
 
     }
 
