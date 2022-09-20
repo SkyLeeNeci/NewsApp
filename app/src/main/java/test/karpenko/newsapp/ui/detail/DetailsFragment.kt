@@ -9,10 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.URLUtil
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import test.karpenko.newsapp.databinding.FragmentDetailsBinding
 
+@AndroidEntryPoint
 class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
@@ -20,6 +24,7 @@ class DetailsFragment : Fragment() {
     get() = _binding!!
 
     private val navArguments: DetailsFragmentArgs by navArgs()
+    private val viewModel by viewModels<DetailsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +56,11 @@ class DetailsFragment : Fragment() {
                         ?.let { article.url }?: "https://www.google.com" )).let {
                             ContextCompat.startActivity(requireContext(), it, null)
                     }
+            }
+
+            mBinding.likeImageView.setOnClickListener {
+                viewModel.saveToFavoriteArticle(article)
+                Snackbar.make(it, "Article №${article.id}, ${article.source} saved", Snackbar.LENGTH_SHORT).show()
             }
         }
 
