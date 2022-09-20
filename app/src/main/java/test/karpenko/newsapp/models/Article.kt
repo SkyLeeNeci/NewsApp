@@ -10,7 +10,7 @@ import kotlinx.android.parcel.RawValue
 @Entity(tableName = "articles")
 data class Article(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Int? = null,
     val author: String?,
     val content: String?,
     val description: String?,

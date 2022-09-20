@@ -1,21 +1,19 @@
 package test.karpenko.newsapp.data.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import test.karpenko.newsapp.models.Article
 
+@Dao
 interface ArticleDao {
 
     @Query("select * from articles")
-    suspend fun getAllArticles(): LiveData<List<Article>>
+    fun getAllArticles(): LiveData<List<Article>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     suspend fun insertArticle(article: Article)
+    suspend fun insertArticle(article: Article)
 
-     @Delete
-     suspend fun deleteArticle(article: Article)
+    @Delete
+    suspend fun deleteArticle(article: Article)
 
 }
